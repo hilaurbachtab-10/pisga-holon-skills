@@ -418,3 +418,43 @@ details.guide summary{cursor:pointer;font-weight:700;color:#29275E}
 .about .contact-list a{font-weight:600}
 .site-footer .updated{font-size:.85rem;margin-top:.3rem}
 @media print{.act-filters,#af-count,#af-empty{display:none!important}.act.f-hide{display:block!important}}
+
+/* ---- core skills (6) ---- */
+.core-grid{list-style:none;padding:0;margin:1rem 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
+.core-card{display:flex;flex-direction:column;gap:.45rem;height:100%;box-sizing:border-box;padding:1.2rem;border:1px solid var(--line);border-top:8px solid var(--fam);border-radius:var(--radius);background:#fff;color:var(--ink);text-decoration:none}
+.core-card:hover{background:var(--fam-l)}
+.core-card b{font-family:"Secular One",sans-serif;font-weight:400;font-size:1.3rem;color:var(--navy)}
+.core-num{display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--fam);color:#fff;font-weight:700}
+.core-meta{margin-top:auto;font-size:.9rem;color:var(--fam-d);font-weight:700}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.how{background:var(--bg);border-radius:var(--radius);padding:1rem 1.1rem}
+.how h3{margin:.1rem 0 .4rem;color:var(--navy)}
+.core-hero{background:var(--fam-l);border-bottom:6px solid var(--fam)}
+.core-draft{background:#fff8e1;border:1px solid #f0d58a;border-radius:var(--radius);padding:.7rem 1rem;margin:.8rem 0}
+.step-ladder{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;align-items:end;margin-top:1rem}
+.stage-group{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:.9rem;display:flex;flex-direction:column;gap:.5rem}
+.stage-group h3{margin:0;display:flex;flex-direction:column;gap:.2rem;font-size:1.05rem;color:var(--navy)}
+.stage-group h3 small{font-family:inherit;font-weight:400;font-size:.85rem;color:var(--muted,#555)}
+.sg1{border-top:6px solid color-mix(in srgb,var(--fam) 35%,#fff)}.sg2{border-top:6px solid color-mix(in srgb,var(--fam) 60%,#fff)}.sg3{border-top:6px solid var(--fam)}.sg4{border-top:6px solid var(--fam-d)}
+.sg2{margin-top:2rem}.sg3{margin-top:0}.step-ladder .sg1{margin-top:6rem}.step-ladder .sg2{margin-top:4rem}.step-ladder .sg3{margin-top:2rem}
+.step-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.45rem}
+.step-list li{display:flex;gap:.55rem;align-items:flex-start;background:var(--fam-l);border-radius:10px;padding:.55rem .65rem;font-size:.97rem}
+.step-n{flex:0 0 auto;display:grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--fam-d);color:#fff;font-weight:700;font-size:.9rem}
+.stage-acts summary{cursor:pointer;font-weight:700;color:var(--fam-d);font-size:.92rem}
+.stage-acts ul{padding-inline-start:1.1rem;margin:.4rem 0;font-size:.9rem}
+.stage-acts .kit{font-size:.82rem;margin-inline-start:.3rem}
+.from-rubric summary{cursor:pointer;font-weight:700;color:var(--navy)}
+.pn{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:1.5rem auto}
+.core-badge{margin:.1rem 0 .5rem;font-size:.88rem}
+.core-badge a{display:inline-block;padding:.15rem .7rem;border-radius:999px;background:var(--fam-l);border:1px solid var(--fam);color:var(--fam-d);font-weight:700;text-decoration:none}
+.table-scroll{overflow-x:auto}
+.steps-map{border-collapse:collapse;width:100%;min-width:860px;font-size:.92rem}
+.steps-map th,.steps-map td{border:1px solid var(--line);padding:.55rem .6rem;vertical-align:top;text-align:start}
+.steps-map thead th{background:var(--navy);color:#fff}
+.steps-map tbody th{background:var(--fam-l);border-inline-start:6px solid var(--fam);width:13rem}
+.steps-map tbody th a{color:var(--navy)}
+.steps-map .mini{margin:0;padding-inline-start:1.3rem}
+.steps-map .mini li{margin:.15rem 0}
+.cl-examples li{background:var(--bg)}
+@media (max-width:820px){.step-ladder{grid-template-columns:1fr}.step-ladder .sg1,.step-ladder .sg2,.step-ladder .sg3{margin-top:0}}
+@media print{.step-ladder{grid-template-columns:repeat(4,1fr)}.stage-acts{display:none}.steps-map{min-width:0;font-size:9pt}}
