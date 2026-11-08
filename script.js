@@ -96,7 +96,7 @@ var PISGA_COUNTS={"total": 126, "team": 76, "starter": 50, "emo": {"c": 3, "s": 
 (function(){
   var form=document.querySelector(".act-filters"); if(!form) return;
   var acts=[].slice.call(document.querySelectorAll("article.act[data-fam]"));
-  var fam=document.getElementById("af-fam"),sk=document.getElementById("af-skill"),st=document.getElementById("af-stage"),du=document.getElementById("af-dur"),
+  var co=document.getElementById("af-core")||{value:"",addEventListener:function(){}},fam=document.getElementById("af-fam"),sk=document.getElementById("af-skill"),st=document.getElementById("af-stage"),du=document.getElementById("af-dur"),
       cnt=document.getElementById("af-count"),empty=document.getElementById("af-empty");
   var skOpts=[].slice.call(sk.options);
   function syncSkills(){var f=fam.value;skOpts.forEach(function(o){if(!o.value)return;o.hidden=!!f&&o.dataset.fam!==f;o.disabled=o.hidden;});
@@ -104,7 +104,7 @@ var PISGA_COUNTS={"total": 126, "team": 76, "starter": 50, "emo": {"c": 3, "s": 
   function apply(){
     var n=0;
     acts.forEach(function(a){
-      var ok=(!fam.value||a.dataset.fam===fam.value)&&(!sk.value||a.dataset.skill===sk.value)&&(!st.value||a.dataset.stage===st.value)&&(!du.value||a.dataset.dur===du.value);
+      var ok=(!co.value||a.dataset.core===co.value)&&(!fam.value||a.dataset.fam===fam.value)&&(!sk.value||a.dataset.skill===sk.value)&&(!st.value||a.dataset.stage===st.value)&&(!du.value||a.dataset.dur===du.value);
       a.classList.toggle("f-hide",!ok); if(ok)n++;
     });
     [].forEach.call(document.querySelectorAll(".acts"),function(g){
@@ -115,12 +115,12 @@ var PISGA_COUNTS={"total": 126, "team": 76, "starter": 50, "emo": {"c": 3, "s": 
     });
     [].forEach.call(document.querySelectorAll(".toc a[href^='#ACT-']"),function(l){var a=document.getElementById(l.getAttribute("href").slice(1));if(a&&l.parentNode)l.parentNode.hidden=a.classList.contains("f-hide");});
     cnt.textContent="מוצגות "+n+" מתוך "+acts.length+" פעילויות"; empty.hidden=n>0;
-    var p=new URLSearchParams();if(fam.value)p.set("fam",fam.value);if(sk.value)p.set("skill",sk.value);if(st.value)p.set("stage",st.value);if(du.value)p.set("dur",du.value);
+    var p=new URLSearchParams();if(co.value)p.set("core",co.value);if(fam.value)p.set("fam",fam.value);if(sk.value)p.set("skill",sk.value);if(st.value)p.set("stage",st.value);if(du.value)p.set("dur",du.value);
     try{history.replaceState(null,"",location.pathname+(p.toString()?"?"+p:"")+location.hash);}catch(e){}
   }
   var q=new URLSearchParams(location.search);
-  if(q.get("fam"))fam.value=q.get("fam"); syncSkills(); if(q.get("skill"))sk.value=q.get("skill"); if(q.get("stage"))st.value=q.get("stage"); if(q.get("dur"))du.value=q.get("dur");
-  fam.addEventListener("change",function(){syncSkills();apply();}); [sk,st,du].forEach(function(s){s.addEventListener("change",apply);});
+  if(q.get("core"))co.value=q.get("core");if(q.get("fam"))fam.value=q.get("fam"); syncSkills(); if(q.get("skill"))sk.value=q.get("skill"); if(q.get("stage"))st.value=q.get("stage"); if(q.get("dur"))du.value=q.get("dur");
+  fam.addEventListener("change",function(){syncSkills();apply();}); [co,sk,st,du].forEach(function(s){s.addEventListener("change",apply);});
   form.addEventListener("submit",function(e){e.preventDefault();});
   form.addEventListener("reset",function(){setTimeout(function(){syncSkills();apply();},0);});
   apply();
